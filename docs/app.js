@@ -13,7 +13,7 @@ var goappOnAppInstallChange = function () {
   goappAppInstallChangedBeforeWasmLoaded = true;
 };
 
-const goappEnv = {"GOAPP_INTERNAL_URLS":"null","GOAPP_ROOT_PREFIX":"/","GOAPP_STATIC_RESOURCES_URL":"/web","GOAPP_VERSION":"f7eca1d1ecbfae4ae395b8247331a9bb251619c3"};
+const goappEnv = {"GOAPP_INTERNAL_URLS":"null","GOAPP_ROOT_PREFIX":"/prj-markdown-preview","GOAPP_STATIC_RESOURCES_URL":"/prj-markdown-preview/web","GOAPP_VERSION":"ae71d09e51bd3e98097dea94b2f4c2ed3fc396d8"};
 const goappLoadingLabel = "{progress}%";
 const goappWasmContentLength = "";
 const goappWasmContentLengthHeader = "";
@@ -33,7 +33,7 @@ async function goappInitServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register(
-        "/app-worker.js"
+        "/prj-markdown-preview/app-worker.js"
       );
       goappServiceWorkerRegistration = registration;
       goappSetupNotifyUpdate(registration);
@@ -238,7 +238,7 @@ async function goappInitWebAssembly() {
 
     const go = new Go();
     const wasm = await instantiateStreaming(
-      fetchWithProgress("/web/app.wasm", showProgress),
+      fetchWithProgress("/prj-markdown-preview/web/app.wasm", showProgress),
       go.importObject
     );
 

@@ -6,20 +6,20 @@
     <meta name="description" content="A live markdown previewer built with go-app">
     <meta name="theme-color" content="#2d2c2c">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <meta content="yes" name="mobile-web-app-capable">
-    <meta property="og:url" content="https://">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:url" content="https:///prj-markdown-preview">
     <meta property="og:title">
     <meta property="og:description" content="A live markdown previewer built with go-app">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://">
     <title></title>
     <link rel="icon" href="https://raw.githubusercontent.com/maxence-charriere/go-app/master/docs/web/icon.svg">
-    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/maxence-charriere/go-app/master/docs/web/icon.png">
-    <link href="/manifest.webmanifest" rel="manifest">
-    <link rel="stylesheet" href="/app.css" type="text/css">
-    <link rel="stylesheet" href="/web/style.css" type="text/css">
-    <script src="/wasm_exec.js" defer></script>
-    <script defer src="/app.js"></script>
+    <link href="https://raw.githubusercontent.com/maxence-charriere/go-app/master/docs/web/icon.png" rel="apple-touch-icon">
+    <link rel="manifest" href="/prj-markdown-preview/manifest.webmanifest">
+    <link href="/prj-markdown-preview/app.css" type="text/css" rel="stylesheet">
+    <link href="/prj-markdown-preview/web/style.css" type="text/css" rel="stylesheet">
+    <script defer src="/prj-markdown-preview/wasm_exec.js"></script>
+    <script defer src="/prj-markdown-preview/app.js"></script>
   </head>
   <body>
     <div class="markdown-previewer">
@@ -27,7 +27,7 @@
       <p>Type markdown on the left, see preview on the right</p>
       <div class="container">
         <div class="editor-pane">
-          <textarea id="editor-field" class="editor" placeholder="Type your markdown here..."></textarea>
+          <textarea placeholder="Type your markdown here..." id="editor-field" class="editor"></textarea>
         </div>
         <div class="preview-pane">
           <div id="preview" class="preview"></div>
@@ -37,9 +37,9 @@
         <button class="btn clear-btn">Clear</button>
       </div>
     </div>
-    <aside id="app-wasm-loader" class="goapp-app-info">
+    <aside class="goapp-app-info" id="app-wasm-loader">
       <img src="https://raw.githubusercontent.com/maxence-charriere/go-app/master/docs/web/icon.png" id="app-wasm-loader-icon" class="goapp-logo goapp-spin" alt="wasm loader icon">
-      <p id="app-wasm-loader-label" class="goapp-label">0%</p>
+      <p class="goapp-label" id="app-wasm-loader-label">0%</p>
     </aside>
   </body>
 </html>

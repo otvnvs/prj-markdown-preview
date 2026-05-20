@@ -117,6 +117,7 @@ var handler = &app.Handler{
 	},
 }
 
+
 func generate(dir string) error {
 	fmt.Printf("Generating static site into %q...\n", dir)
 
@@ -171,6 +172,7 @@ func generate(dir string) error {
 	return nil
 }
 
+/*
 func main() {
 	app.Route("/", func() app.Composer { return &markdownPreviewer{} })
 	app.RunWhenOnBrowser()
@@ -180,6 +182,58 @@ func main() {
 	flag.Parse()
 
 	if *generateFlag {
+		if err := generate(*dir); err != nil {
+			log.Fatal(err)
+		}
+		return
+	}
+
+	http.Handle("/", handler)
+	fmt.Println("Serving on http://localhost:8000")
+	if err := http.ListenAndServe(":8000", nil); err != nil {
+		log.Fatal(err)
+	}
+}
+*/
+/*
+func main() {
+	app.Route("/", func() app.Composer { return &markdownPreviewer{} })
+	app.RunWhenOnBrowser()
+
+	generateFlag := flag.Bool("generate", false, "Generate static website instead of starting the server")
+	dir := flag.String("dir", "docs", "Output directory for static generation")
+	rootDir := flag.String("rootdir", "", "Root path prefix for static generation (e.g. /prj-markdown-preview)")
+	flag.Parse()
+
+	if *generateFlag {
+		handler.RootDir = *rootDir
+		if err := generate(*dir); err != nil {
+			log.Fatal(err)
+		}
+		return
+	}
+
+	http.Handle("/", handler)
+	fmt.Println("Serving on http://localhost:8000")
+	if err := http.ListenAndServe(":8000", nil); err != nil {
+		log.Fatal(err)
+	}
+}
+*/
+
+func main() {
+	app.Route("/", func() app.Composer { return &markdownPreviewer{} })
+	app.RunWhenOnBrowser()
+
+	generateFlag := flag.Bool("generate", false, "Generate static website instead of starting the server")
+	dir := flag.String("dir", "docs", "Output directory for static generation")
+	repo := flag.String("repo", "", "GitHub Pages repo name (e.g. prj-markdown-preview), sets asset base path")
+	flag.Parse()
+
+	if *generateFlag {
+		if *repo != "" {
+			handler.Resources = app.GitHubPages(*repo)
+		}
 		if err := generate(*dir); err != nil {
 			log.Fatal(err)
 		}
