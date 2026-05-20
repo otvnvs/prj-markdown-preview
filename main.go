@@ -176,7 +176,7 @@ func main() {
 	app.RunWhenOnBrowser()
 
 	generateFlag := flag.Bool("generate", false, "Generate static website instead of starting the server")
-	dir := flag.String("dir", "dist", "Output directory for static generation")
+	dir := flag.String("dir", "docs", "Output directory for static generation")
 	flag.Parse()
 
 	if *generateFlag {
